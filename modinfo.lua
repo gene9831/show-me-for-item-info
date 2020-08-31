@@ -1,5 +1,5 @@
 -- information about the mod
-version = "0.50"
+version = "0.50.1"
 version_compatible = "0.49"
 name = "Show Me (for Item Info)"
 author = "Star, +Serp"
@@ -155,6 +155,16 @@ configuration_options =
 		hover = "This is blue component of highlighted chests color.",
 		options = color_options,
 		default = -1,
+	},
+	{
+		name = "show_buddle",
+		label = "Show Buddle",
+		options =
+		{
+			{description = "Yes", data = 1},
+			{description = "No", data = 0},
+		}, 
+		default = 1,
 	},
 	{
 		name = "item_info",

@@ -73,6 +73,10 @@ if chestB == -1 then
 	if (chestB == -1) then chestB = 1 end
 end
 --print('RGB CHEST',chestR,chestG,chestB)
+local show_buddle = tonumber(GetModConfigData("show_buddle",true)) or 1
+if show_buddle == 1 then
+	show_buddle = tonumber(GetModConfigData("show_buddle")) or 1
+end
 local item_info = tonumber(GetModConfigData("item_info",true)) or 0
 if item_info == 0 then
 	item_info = tonumber(GetModConfigData("item_info")) or 0
@@ -1624,7 +1628,7 @@ function GetTestString(item,viewer) --Отныне форкуемся от Tell 
 				end
 			end
 		end
-		if item_info == 0 and ing[prefab] and show_food_units ~= 2 then -- ==2 means that food info is forbidden on the server.
+		if ing[prefab] and show_food_units ~= 2 then -- ==2 means that food info is forbidden on the server.
 			for k,v in pairs(ing[prefab].tags) do
 				if k~="precook" and k~="dried" then
 					cn("units_of",v,k)
@@ -1865,7 +1869,7 @@ function GetTestString(item,viewer) --Отныне форкуемся от Tell 
 		--c.unwrappable.itemdata[1].prefab
 		--c.unwrappable.itemdata[1].data.perishable.time - оставшееся время порчи в секундах.
 		--	   .stackable.stack - количество
-		if c.unwrappable and c.unwrappable.itemdata and type(c.unwrappable.itemdata) == 'table' then
+		if show_buddle == 1 and c.unwrappable and c.unwrappable.itemdata and type(c.unwrappable.itemdata) == 'table' then
 			--По одной строке на каждый предмет.
 			for i,v in ipairs(c.unwrappable.itemdata) do
 				if v.prefab then
